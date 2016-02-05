@@ -1,11 +1,12 @@
-#Extracted Data content
-In our dataset there are variables from original dataset and new variables.
+# Extracted Data content
+In our dataset there are variables which were got as means of original dataset variables and new variables.
 
-##The new variables are
-"ActivityLabels" - text label of activity (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
-"Subjects" - ids of the subject (volunteer).
+## The new variables are
+"Group.1" - text label of activity (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+"Group.2" - subjects IDs (volunteer)
 
-##The variables from original dataset are described below (in original work):
+## The following variables are the averages of each variable (from original data set) for each activity and each subject:
+(original dataset variables are described below)
 "tBodyAcc-mean()-X"
 "tBodyAcc-mean()-Y"
 "tBodyAcc-mean()-Z"
