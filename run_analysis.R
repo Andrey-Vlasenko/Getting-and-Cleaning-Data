@@ -52,7 +52,7 @@ F_24 <- "test/Inertial Signals/body_gyro_x_test.txt"  #### The angular velocity 
 library(plyr)
 Features <- read.table(F_Features)
 Features$V2 <- as.character(Features$V2)
-VariableNames <- arrange(Features,V1)[,2]
+VariableNames <- arrange(Features,V1)
 ActivityLabels <- read.table(F_ActivityLabels)
 ActivityLabels$V2 <- as.character(ActivityLabels$V2)
 
@@ -65,7 +65,7 @@ Set <- rbind(TrainingSet,TestSet)
 
 ## 2.Extracts only the measurements on the mean and standard deviation for each measurement.
 ### Finding only exactly "-mean()" and "-std()" not get "-meanFreq()"
-NumVars <- sort(unique(c(grep("-mean()",VariableNames,fixed=TRUE),grep("-std()",VariableNames,fixed=TRUE))))
+NumVars <- sort(unique(c(grep("-mean()",VariableNames[,2],fixed=TRUE),grep("-std()",VariableNames[,2],fixed=TRUE))))
 length(NumVars)
 Set_Extracted <- Set[,NumVars]
 
@@ -81,7 +81,9 @@ Set_Extracted <- cbind(Set_Extracted, Labels)
 
 
 ## 4.Appropriately labels the data set with descriptive variable names.
-names(Set_Extracted) <- c(VariableNames[NumVars],"ActivityLabels")
+VariableNames <- mutate(VariableNames, VarName = gsub("[^a-zA-Z0-9]+", '_', V2))
+VariableNames$VarName <- gsub("^[_]+|[_]+$", '', VariableNames$VarName)
+names(Set_Extracted) <- c(VariableNames[NumVars,3],"ActivityLabels")
 
 
 ## 5.From the data set in step 4, creates a second, independent tidy data set 
@@ -113,4 +115,5 @@ dim(Dt)
 NumOfRowsInDt <- sum( table( cbind(rbind(TrainingLabels,TestLabels),rbind(TrainingSubjects,TestSubjects))) >0)
 NumOfRowsInDt
 NumOfRowsInDt == dim(Dt)[1]
-
+Names <- names(Dt)
+str(Dt, comp.str = "* ", vec.len = 0)

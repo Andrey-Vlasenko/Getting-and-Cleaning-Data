@@ -1,10 +1,11 @@
 # Getting and Cleaning Data Course Project
 
-
 ## Project content:
+
 * CodeBook.md - CodeBook
 * run_analysis.R  - R script with comments (It ask you to choose working directory and then do everything itself).
 * result.txt - file with results of the step 5 (you can find it in your working directory after run the script).
+
 
 
 The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
@@ -19,6 +20,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 The R script called run_analysis.R does the following.
 
+    0. Dowloading and unziping the files (if they doesn't exist in working directory)
     1.Merges the training and the test sets to create one data set.
     2.Extracts only the measurements on the mean and standard deviation for each measurement.
     3.Uses descriptive activity names to name the activities in the data set
