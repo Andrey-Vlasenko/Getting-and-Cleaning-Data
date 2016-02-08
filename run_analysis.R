@@ -73,7 +73,9 @@ Set_Extracted <- Set[,NumVars]
 ## 3.Uses descriptive activity names to name the activities in the data set
 TrainingLabels <- read.table(F_TrainingLabels)
 TestLabels <- read.table(F_TestLabels)
-Labels <- merge(rbind(TrainingLabels,TestLabels), ActivityLabels)[2]
+Labels <- arrange(merge(mutate(rbind(TrainingLabels,TestLabels),nRow=1:(nrow(TrainingLabels)+nrow(TestLabels))),
+                  ActivityLabels),nRow)[3]
+#### 'merge(rbind(TrainingLabels,TestLabels), ActivityLabels)[2]' changes the order of mesurements (it's wrong).
 names(Labels) <- "ActivityLabels"
 Set_Extracted <- cbind(Set_Extracted, Labels)
 
@@ -108,7 +110,7 @@ if(!b_Dim) {
 
 ## 6.What we have in 5.
 dim(Dt)
-NumOfRowsInDt <- sum(table(cbind(Labels,Subjects))>0)
+NumOfRowsInDt <- sum( table( cbind(rbind(TrainingLabels,TestLabels),rbind(TrainingSubjects,TestSubjects))) >0)
 NumOfRowsInDt
 NumOfRowsInDt == dim(Dt)[1]
 
