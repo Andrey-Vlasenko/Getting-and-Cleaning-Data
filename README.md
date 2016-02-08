@@ -1,11 +1,10 @@
 # Getting and Cleaning Data Course Project
 
 
-Project content:
-
-*CodeBook.md - CodeBook
-*run_analysis.R  - R script with comments (It ask you to choose working directory and then do everything itself).
-*result.txt - file with results of the step 5 (you can find it in your working directory after run the script).
+## Project content:
+* CodeBook.md - CodeBook
+* run_analysis.R  - R script with comments (It ask you to choose working directory and then do everything itself).
+* result.txt - file with results of the step 5 (you can find it in your working directory after run the script).
 
 
 The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis.
